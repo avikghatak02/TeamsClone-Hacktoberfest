@@ -1,12 +1,16 @@
 const express = require('express');
-const app = express();                        //Initialize the express application
+const app = express();                              //Initialize the express application
 const server = require('http').Server(app);
-
-app.set('view engine', 'ejs');                //Setting the view engine as ejs
+const { v4: uuidv4 } = require('uuid');             //Require UUID to generate unique room ids
+app.set('view engine', 'ejs');                      //Setting the view engine as ejs
 
 //ROUTES===============================================================================================================================
-app.get('/', (req, res) => {
-    res.render('index');
+app.get('/', (req, res) => {                        //Landing Route : Redirects to a unique room
+    res.redirect(`/${uuidv4()}`);
+})
+
+app.get('/:room', (req, res) => {                   //Unique Room Route : Passes the unique room id to ejs file
+    res.render('index', { roomId: req.params.room });
 })
 
 
