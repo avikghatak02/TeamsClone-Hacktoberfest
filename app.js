@@ -11,7 +11,7 @@ app.get('/', (req, res) => {                        //Landing Route : Redirects 
 
 app.get('/:room', (req, res) => {                   //Unique Room Route : Passes the unique room id to ejs file
     res.render('index', { roomId: req.params.room });
-})
+});
 
 
 //SERVER ==============================================================================================================================
