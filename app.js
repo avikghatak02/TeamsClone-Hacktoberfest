@@ -1,4 +1,3 @@
-// const { Socket } = require('dgram');
 const express = require('express');
 const app = express();                                            //Initialize the express application
 const server = require('http').Server(app);
@@ -10,7 +9,7 @@ const peerServer = ExpressPeerServer(server, {
 });
 app.set('view engine', 'ejs');                                    //Setting the view engine as ejs
 app.use(express.static('public'));
-app.use('/peerjs', peerServer);                                    //Specify url for peer js
+app.use('/peerjs', peerServer);                                   //Specify url for peer js
 
 //ROUTES===============================================================================================================================
 app.get('/', (req, res) => {                                      //Landing Route : Redirects to a unique room
@@ -25,6 +24,10 @@ io.on('connection', Socket => {                                   //Join Room wi
     Socket.on('join-room', (roomId, userId) => {
         Socket.join(roomId);
         Socket.broadcast.to(roomId).emit('user-connected', userId);  //Broadcast User is Connected to all clients except sender
+
+        Socket.on('message', message => {                          //Listens for the message recieved from the chat box
+            io.to(roomId).emit('createMessage', message);          //emits message to all clients in the same room from server 
+        })
     })
 })
 //SERVER ==============================================================================================================================
