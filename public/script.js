@@ -81,6 +81,8 @@ const scrollToBottom = () => {                             //Function to scroll 
     x.scrollTop(x.prop("scrollHeight"));
 }
 
+//FUNCTIONING BUTTONS ==============================================================================================================
+
 const muteUnmute = () => {                                 //Function to Mute if Unmuted and vice-versa
     const enabled = ownVideoStr.getAudioTracks()[0].enabled; //get the current status of audio (if muted/unmuted)
     if (enabled) {                                         //if audio is muted => unmute and change the icon 
@@ -93,7 +95,7 @@ const muteUnmute = () => {                                 //Function to Mute if
 }
 
 const setUnmuteBtn = () => {                               //Function to set the Unmute button (change icon)
-    const html = `<i class="unmute fas fa-microphone-slash"></i>`
+    const html = `<i class=" fas fa-microphone-slash"></i>`
     document.querySelector('.mute_btn').innerHTML = html;  //change the html code to change icon
 }
 
@@ -119,6 +121,6 @@ const setStopVid = () => {                                 //Function to change 
 }
 
 const setPlayVid = () => {                                 //Function to change video icon by changing innerhtml
-    const html = `<i class="stop fas fa-video-slash"></i>`
+    const html = `<i class=" fas fa-video-slash"></i>`
     document.querySelector('.video_btn').innerHTML = html;
 }

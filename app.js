@@ -12,6 +12,7 @@ app.use(express.static('public'));
 app.use('/peerjs', peerServer);                                   //Specify url for peer js
 
 //ROUTES===============================================================================================================================
+
 app.get('/', (req, res) => {                                      //Landing Route : Redirects to a unique room
     res.redirect(`/${uuidv4()}`);
 })
