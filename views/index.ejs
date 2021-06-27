@@ -32,7 +32,7 @@
 <body>
     <!--DISPLAYING THE VIDEO GRID-->
     <div class="main">
-        <div class="left">
+        <div class="left" id="l">
             <div class="header">Meeting</div>
             <!--CONTROLS-->
             <div class="controls">
@@ -44,13 +44,17 @@
                     <div class="control_buttons">
                         <i class="fas fa-user-friends"></i>
                     </div>
+                    <!--CHAT-->
                     <div class="control_buttons">
-                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        <i class="fa fa-commenting-o " aria-hidden="true"></i>
+                    </div>
+                    <div class="control_buttons">
+                        <i class="fa fa-smile-o" aria-hidden="true"></i>
                     </div>
                     <div class="control_buttons">
                         <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                     </div>
-                    </br>
+                    <div class="vl"></div>
                     <!--On clicking this icon call stopPlay()-->
                     <div onclick="stopPlay()" class="control_buttons video_btn">
                         <i class="fas fa-video"></i>

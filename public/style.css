@@ -25,12 +25,12 @@ video{
     display: flex;
 }
 .left{
-    flex: 0.8;
+    flex:0.9;
     display: flex;
     flex-direction: column;
 }
 .right{
-    flex:0.2;
+    flex: 0.1;
     display: flex;
     flex-direction: column;
     background-color: #242324;
@@ -83,11 +83,13 @@ video{
     overflow-y: scroll;
 }
 .message_container{
-    padding: 22px 12px;
+    padding: 20px 5px;
     display: flex;
+    padding-bottom: 6px;
 }
 .messages{
     color: white;
+    padding: 5px;
 }
 .header{
     display: flex;
@@ -97,4 +99,23 @@ video{
     color: #f5f5f5;
     padding: 5px;
     text-align: center;
+}
+.vl{
+    border-left: 1px solid white;
+    padding-left: 8px;
+    margin-left: 8px;
+}
+ul {
+    list-style-type: none;
+    font-family: 'Lucida Console', Courier, monospace;
+}
+ul li{
+    padding: 2px;
+    border-radius: 4px;
+}
+ul li:nth-child(odd){
+    background-color: #3D3D42;
+}
+input{
+    padding: 10px;
 }
