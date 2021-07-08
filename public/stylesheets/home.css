@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    padding: 0;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/375/1004/16/5k-cgi-dark-mountains-wallpaper-preview.jpg");
+    background-size: cover;
+}
+body::before{
+    margin: 0;
+    padding: 0;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background-size:cover;
+    margin: 0;
+    padding: 0;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.info{
+    display:  flex; 
+    flex-direction:  row; 
+    width: fit-content; 
+    height:  70%; 
+    margin:  7.5%; 
+    border-radius:  4px; 
+    box-sizing: border-box;
+    padding:0px;
+}
+.info input{
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+.info button{
+    padding: 5px;
+    background-color: rgb(41, 41, 151);
+    border-radius: 20px;
+    border: none;
+    color: black;
+    outline: none;
+}
+.info button:hover{
+    background-color: rgb(2, 2, 48);
+    transform:  translateY(-3px);
+    color: white;
+    outline: none;
+}

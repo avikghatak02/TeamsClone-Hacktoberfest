@@ -1,0 +1,219 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+#video-grid{
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+video{
+    border-radius: 20px;
+    height: inherit;
+    width: 450px;
+    object-fit: contain;
+    margin: 30px;
+}
+.videos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 20px; */
+}
+.main{
+    height: 100vh;
+    display: flex;
+}
+.left{
+    flex:0.75;
+    display: flex;
+    flex-direction: column;
+}
+.right{
+    height: 91vh;
+    flex: 0.25;
+    display: flex;
+    flex-direction: column;
+    background-color: #242e42;
+}
+.controls{
+    margin: 20px;
+    align-self: center;
+    display: flex;
+    color: #d2d2d2;
+    background: rgba(255,255,255,0.2);
+    justify-content: space-between;
+    border-radius: 15px;
+}
+.control_block{
+    display: flex;
+}
+.control_buttons{
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 25px;
+    cursor: pointer;
+    align-items: center;
+    min-width: 50px;
+}
+.control_buttons:hover{
+    background: white;
+    color: black;
+    transform:  translateY(-3px);
+}
+.leave_meeting{
+    background-color: #c43146;
+    border: 1px solid #c43146;
+    border-radius: 3px;
+    padding: 2px 10px;
+}
+.control_buttons:hover {
+    background-color: #343434;
+    border-radius: 5px;
+}
+.chat{
+    color: #f5f5f5;
+    text-align: center;
+}
+.chat_window{
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+.message_container{
+    padding: 20px 5px;
+    display: flex;
+    padding-bottom: 6px;
+}
+.messages{
+    word-break: break-all;
+    color: white;
+    padding: 8px;
+}
+.time{
+    font-size: 0.95rem;
+    color: gray;
+    margin-left: 6px;
+    margin-bottom: 9px;
+}
+.header{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #1d2635;
+    color: #f5f5f5;
+    padding: 3px;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+.message{
+    background: rgba(250, 250, 250, 0.75);
+    border-radius:10px;
+    color: black;
+    padding: 10px;
+    padding-left: 5px;
+    margin: 3px;
+    margin-top: 6px;
+}
+.name{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: lighter;
+}
+input{
+    background: rgba(255, 253, 253, 0.09);
+    padding: 7px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+input:hover{
+    background: white;
+    transform:  translateY(-3px);
+    color: black;
+    outline: none;
+}
+.back{
+        align-self: baseline;
+}
+.back button {
+    font-size: larger;
+    margin-left: 5px;
+    color: rgba(250, 250, 250, 0.75);
+}
+.back button:hover{
+    background: rgba(255, 255, 255, 1);
+    transform:  translateY(-3px);
+    border-radius: 20px;
+}
+.vl{
+    border-right: 1px solid gray;
+    margin: 5px
+}
+/* Popup to show the meeting Code */
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: small;
+  visibility: hidden;
+  width:max-content;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  padding-bottom: 20px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

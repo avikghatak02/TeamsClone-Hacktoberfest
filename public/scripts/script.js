@@ -27,7 +27,7 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
         });
     }, err => { console.log(err); })
 
-    socket.on('user-connected', (userId) => {              //Connect new user when user-connected is broadcasted by sender
+    socket.on('user-connected', (userId, username) => {              //Connect new user when user-connected is broadcasted by sender
         setTimeout(() => {
             //user joined
             connectUser(userId, stream);
@@ -36,7 +36,6 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
     //CHAT BOX FUNCTIONALITIES USING SOCKET IO ==================================================================================
 
     let text = $('input')                                      //Getting the message from the chat box
-    console.log(text)
     $('html').keydown((e) => {                                 //After pressing input send message from client to server
         if (e.which == 13 && text.val().length !== 0) {
             console.log(text.val())
@@ -45,14 +44,17 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
         }
     })
 
-    socket.on('createMessage', message => {                    //Recieving the message from the server 
-        $('ul').append(`<li class="message"><b>USER</b></br>${message}</li>`) //Adding message in the html file
+    socket.on('createMessage', (message, username) => {                    //Recieving the message from the server 
+        Date.prototype.timeNow = function () { return ((this.getHours() < 10) ? "0" : "") + ((this.getHours() > 12) ? (this.getHours() - 12) : this.getHours()) + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ((this.getHours() > 12) ? (' PM') : ' AM'); };
+        var newDate = new Date();
+        var time = newDate.timeNow();
+        $('ul').append(`<li><b class="name">${username}</b><div class="message">${message}</div><div class="time">${time}</div></li>`) //Adding message in the html file
         scrollToBottom()
     })
 });
 
 peer.on('open', id => {                                    //Listen on peer connection (id: id os new user)
-    socket.emit('join-room', RoomId, id);
+    socket.emit('join-room', RoomId, id, username);
 })
 
 //VIDEO FUNCTIONS =================================================================================================================
@@ -123,4 +125,19 @@ const setStopVid = () => {                                 //Function to change 
 const setPlayVid = () => {                                 //Function to change video icon by changing innerhtml
     const html = `<i class=" fas fa-video-slash"></i>`
     document.querySelector('.video_btn').innerHTML = html;
+}
+
+function copyToClipboard(RoomId) {
+    /* Get the text field */
+    var copyText = RoomId;
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
 }
