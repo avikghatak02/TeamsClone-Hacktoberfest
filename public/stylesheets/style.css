@@ -88,6 +88,9 @@ video{
     flex-grow: 1;
     overflow-y: scroll;
 }
+.chat_window::-webkit-scrollbar {
+    display: none;
+}
 .message_container{
     padding: 20px 5px;
     display: flex;

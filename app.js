@@ -40,13 +40,18 @@ io.on('connection', Socket => {                                   //Join Room wi
     Socket.on('join-room', (roomId, userId, username) => {
         Socket.join(roomId);
         //Broadcast User is Connected to all clients except sender
-        Socket.broadcast.to(roomId).emit('user-connected', userId);
+        Socket.broadcast.to(roomId).emit('user-connected', userId, username);
 
         Socket.on('message', message => {                          //Listens for the message recieved from the chat box
             io.to(roomId).emit('createMessage', message, username);//emits message to all clients in the same room from server 
         })
+        //DISCONNECTING USER
+        Socket.on('disconnect', () => {
+            Socket.to(roomId).emit('user-disconnected', userId, username);
+        })
     })
 })
+
 //SERVER ==============================================================================================================================
 server.listen(3000, () => {
     console.log('Serving on Port 3000')

@@ -4,7 +4,6 @@ const videoGrid = document.getElementById('video-grid');   //Get the div where v
 const ownVideo = document.createElement('video');          //Creates a video element for the video of caller 
 
 ownVideo.muted = true;
-
 const peer = new Peer(undefined, {                         //Create a new peer connection
     path: '/peerjs',
     host: '/',
@@ -32,7 +31,14 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
             //user joined
             connectUser(userId, stream);
         }, 1000)
+        $('ul').append(`<li>${username} joined the meeting</li>`);
     })
+
+    socket.on('user-disconnected', (userId, username) => {
+        if (peer[userId]) peer[userId].close()
+        $('ul').append(`<li>${username} left the meeting</li>`);
+    })
+
     //CHAT BOX FUNCTIONALITIES USING SOCKET IO ==================================================================================
 
     let text = $('input')                                      //Getting the message from the chat box
@@ -68,6 +74,7 @@ const connectUser = (userId, stream) => {                  //Function to connect
     call.on('close', () => {
         video.remove();
     })
+    peers[userId] = call;
 }
 
 const addVideoStr = (video, stream) => {                   //Function to add video stream after loading all the media
@@ -127,17 +134,19 @@ const setPlayVid = () => {                                 //Function to change 
     document.querySelector('.video_btn').innerHTML = html;
 }
 
-function copyToClipboard(RoomId) {
-    /* Get the text field */
-    var copyText = RoomId;
-
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-
-    /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
-}
+//TOGGLE CHAT ======================================================================================================================
+let chat_button = document.querySelector('.chat_btn');
+let Chat_window = document.querySelector('.right');
+let Video_window = document.querySelector('.left')
+chat_button.addEventListener("click", function () {
+    if (Chat_window.classList.contains("selected")) {
+        Chat_window.classList.remove("selected")
+        Chat_window.style.display = "none"
+        Video_window.style.flex = "1"
+    }
+    else {
+        Chat_window.classList.add("selected")
+        Chat_window.style.display = "flex"
+        Video_window.style.flex = "0.8"
+    }
+})
