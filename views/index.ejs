@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teams Clone</title>
+    <title>SQUADS</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <!--BOOTSTRAP-->
     <!-- CSS only -->
@@ -61,15 +61,23 @@
                 <div class="control_block">
                     <div class="control_buttons" onclick="popup()">
                         <div class="popup"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="popuptext" id="myPopup">Meeting Code : <div>
-                                    <%- roomId %>
-                                </div>
+                            <span class="popuptext" id="myPopup">Meeting Code :
+                                <%- roomId %>
+                                    <div><button class="copyBtn btn btn-outline-secondary btn-sm">COPY</button></div>
                         </div>
                     </div>
                     <div class="vl"></div>
                     <!--On clicking this icon call stopPlay()-->
                     <div onclick="stopPlay()" class="control_buttons video_btn">
                         <i class="fas fa-video"></i>
+                    </div>
+                    <div class="vl"></div>
+                    <!--Leave Meeting-->
+                    <div class="control_buttons leave_meeting" style="background: #c43146;">
+                        <form action="/" method="GET">
+                            <button class="btn btn-outline"><i class="fa fa-phone" aria-hidden="true"
+                                    style="color:#d2d2d2;"></i></button>
+                        </form>
                     </div>
                     <div class="vl"></div>
                     <!--On clicking this icon call muteUmnute()-->
@@ -80,14 +88,6 @@
                     <!--Toggle Chat Button-->
                     <div class="control_buttons chat_btn">
                         <i class="fas fa-comment-alt"></i>
-                    </div>
-                    <div class="vl"></div>
-                    <!--Leave Meeting-->
-                    <div class="control_buttons">
-                        <form action="/" method="GET">
-                            <button class="btn btn-outline"><i class="fa fa-phone" aria-hidden="true"
-                                    style="color:#d2d2d2;"></i></button>
-                        </form>
                     </div>
                 </div>
             </div>

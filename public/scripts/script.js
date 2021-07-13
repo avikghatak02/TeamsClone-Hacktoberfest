@@ -7,7 +7,7 @@ ownVideo.muted = true;
 const peer = new Peer(undefined, {                         //Create a new peer connection
     path: '/peerjs',
     host: '/',
-    port: '3000'
+    port: '443'
 });
 
 let ownVideoStr                                            //Video Stream of the Caller
@@ -21,6 +21,7 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
     peer.on('call', call => {                              //Answering the call from the sender
         call.answer(stream)
         const video = document.createElement('video')
+        video.classList.add("otherVideo")
         call.on('stream', userVideo => {
             addVideoStr(video, userVideo);
         });
@@ -31,12 +32,14 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
             //user joined
             connectUser(userId, stream);
         }, 1000)
-        $('ul').append(`<li>${username} joined the meeting</li>`);
+        $('ul').append(`<li class="participant">${username} joined the meeting</li>`);
     })
 
     socket.on('user-disconnected', (userId, username) => {
         if (peer[userId]) peer[userId].close()
-        $('ul').append(`<li>${username} left the meeting</li>`);
+        let videoWindow = document.querySelector('.otherVideo');
+        videoWindow.style.display = "none";
+        $('ul').append(`<li class="participant">${username} left the meeting</li>`);
     })
 
     //CHAT BOX FUNCTIONALITIES USING SOCKET IO ==================================================================================
@@ -50,7 +53,7 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
         }
     })
 
-    socket.on('createMessage', (message, username) => {                    //Recieving the message from the server 
+    socket.on('createMessage', (message, username) => {        //Recieving the message from the server 
         Date.prototype.timeNow = function () { return ((this.getHours() < 10) ? "0" : "") + ((this.getHours() > 12) ? (this.getHours() - 12) : this.getHours()) + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ((this.getHours() > 12) ? (' PM') : ' AM'); };
         var newDate = new Date();
         var time = newDate.timeNow();
@@ -59,7 +62,7 @@ navigator.mediaDevices.getUserMedia({                      //Get access to audio
     })
 });
 
-peer.on('open', id => {                                    //Listen on peer connection (id: id os new user)
+peer.on('open', id => {                                    //Listen on peer connection (id: id of new user)
     socket.emit('join-room', RoomId, id, username);
 })
 
@@ -71,10 +74,10 @@ const connectUser = (userId, stream) => {                  //Function to connect
     call.on('stream', userVideo => {
         addVideoStr(video, userVideo)
     })
+    peers[userId] = call
     call.on('close', () => {
         video.remove();
     })
-    peers[userId] = call;
 }
 
 const addVideoStr = (video, stream) => {                   //Function to add video stream after loading all the media
@@ -117,9 +120,13 @@ const stopPlay = () => {                                   //Function to stop or
     let enabled = ownVideoStr.getVideoTracks()[0].enabled; //get current status of video (if playing/stopped)
     if (enabled) {                                         //if video is on, turn it off and change icon 
         ownVideoStr.getVideoTracks()[0].enabled = false;
+        //let videoWindow = document.querySelector('video');
+        ownVideo.style.display = "none";
         setPlayVid();
     } else {                                               //else if video is off, turn it on and change icon 
         setStopVid();
+        //let videoWindow = document.querySelector('video');
+        ownVideo.style.display = "flex";
         ownVideoStr.getVideoTracks()[0].enabled = true;
     }
 }
@@ -150,3 +157,17 @@ chat_button.addEventListener("click", function () {
         Video_window.style.flex = "0.8"
     }
 })
+
+//COPY TO CLIPBOARD
+function Clipboard_CopyTo(value) {
+    var tempInput = document.createElement("input");
+    tempInput.value = value;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+}
+
+document.querySelector('.copyBtn').onclick = function () {
+    Clipboard_CopyTo(`${RoomId}`);
+}

@@ -17,9 +17,9 @@ body,html{
 video{
     border-radius: 20px;
     height: inherit;
-    width: 450px;
+    width: 400px;
     object-fit: contain;
-    margin: 30px;
+    margin: 20px;
 }
 .videos{
     display: flex;
@@ -44,7 +44,7 @@ video{
     background-color: #242e42;
 }
 .controls{
-    margin: 20px;
+    margin: auto;
     align-self: center;
     display: flex;
     color: #d2d2d2;
@@ -70,14 +70,8 @@ video{
     color: black;
     transform:  translateY(-3px);
 }
-.leave_meeting{
-    background-color: #c43146;
-    border: 1px solid #c43146;
-    border-radius: 3px;
-    padding: 2px 10px;
-}
 .control_buttons:hover {
-    background-color: #343434;
+    background-color: #f5f5f5;
     border-radius: 5px;
 }
 .chat{
@@ -102,10 +96,18 @@ video{
     padding: 8px;
 }
 .time{
+    text-align: end;
     font-size: 0.95rem;
     color: gray;
     margin-left: 6px;
     margin-bottom: 9px;
+}
+.participant{
+    text-align: center;
+    font-size: 0.95rem;
+    color: gray;
+    margin-left: 6px;
+    margin-bottom: 9px;   
 }
 .header{
     margin-top: 15px;
@@ -174,7 +176,7 @@ input:hover{
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  font-family: 'Courier New', Courier, monospace;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: small;
   visibility: hidden;
   width:max-content;

@@ -62,3 +62,12 @@ body::before{
 .body::-webkit-scrollbar {
     display: none;
 }
+.no-gutter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#three{
+    position: relative;
+}

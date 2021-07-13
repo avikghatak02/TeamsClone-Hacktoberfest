@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HOME</title>
+    <title>SQUADS: Teams Clone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
     <link rel="stylesheet" href="stylesheets/css/bootstrap.min.css" />
@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#first">ENGAGE'21</a>
+                <a class="navbar-brand page-scroll" href="#first">ENGAGE 2021</a>
             </div>
             <div class="navbar-collapse collapse" id="bs-navbar">
                 <ul class="nav navbar-nav">
@@ -30,7 +30,7 @@
                         <a class="page-scroll" href="#one">Intro</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#two">Highlights</a>
+                        <a class="page-scroll" href="#two">Key Features</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#three">Video demo</a>
@@ -51,13 +51,13 @@
     <header id="first">
         <div class="header-content">
             <div class="inner">
-                <h1 class="cursive">ENGAGE 2021</h1>
-                <h4>A video calling and chatting web application.</h4>
+                <h1 class="cursive">SQUADS</h1>
+                <h4>A fast and effective video calling experince for your Squad.</h4>
                 <hr>
                 <div class="info">
                     <form action="/landing" method="POST">
-                        <input type="text" placeholder="Name" name="username">
-                        <button class="btn btn-outline">Get Started</button>
+                        <input type="text" placeholder="Name" name="username" style="outline: none">
+                        <button class="btn btn-outline">Get Started</button style="outline: none">
                     </form>
                 </div>
             </div>
@@ -92,21 +92,21 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-android-laptop wow fadeIn" data-wow-delay=".3s"></i>
+                        <img src="./assets/videoCall.jpg" width="200" height="150" style="border-radius:10px">
                         <h3>Create New Meeting</h3>
                         <p class="text-muted">Create a new meeting and share the meeting code.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-social-sass wow fadeInUp" data-wow-delay=".2s"></i>
+                        <img src="./assets/joinMeet.jpg" width="200" height="150" style="border-radius:10px">
                         <h3>Join meeting</h3>
                         <p class="text-muted">Join an existing meeting using a unique code.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 text-center">
                     <div class="feature">
-                        <i class="icon-lg ion-social-sass wow fadeInUp" data-wow-delay=".2s"></i>
+                        <img src="./assets/chat.jpg" width="200" height="150" style="border-radius:10px">
                         <h3>Chat</h3>
                         <p class="text-muted">Chat with other members present in the meeting.</p>
                     </div>
@@ -114,12 +114,16 @@
             </div>
         </div>
     </section>
-    <section id="three" class="no-padding">
+    <section id="three" class="no-padding" style="position: relative;">
         <div class="container-fluid">
-            <div class="row no-gutter">
-                <iframe width="420" height="315" src="https://www.youtube.com/embed/hPENTFVlCrE&t=1s" frameborder="0"
-                    allowfullscreen>
-                </iframe>
+            <div class="row no-gutter" style="position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hPENTFVlCrE"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
     </section>
