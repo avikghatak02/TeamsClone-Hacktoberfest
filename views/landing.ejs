@@ -34,7 +34,10 @@
                 <%- username %>
             </h4>
             <div class="meeting">
-                <a class="btn btn-outline" href="/meeting">New Meeting</a>
+                <div>
+                    <a class="btn btn-outline" href="/meeting">New Meeting</a>
+                    <a class="btn btn-outline" href="https://squad-chatapp.herokuapp.com/">Chat</a>
+                </div>
                 <div class="join-meet">
                     <form action="/meeting" method="POST">
                         <input type="text" placeholder="Meeting ID" name="MeetId">
