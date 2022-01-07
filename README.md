@@ -56,31 +56,29 @@ git clone https://github.com/khushii01/TeamsClone.git
 ``` 
 
 
-```
-
 Open the repository with your code editor. 
 In case you do not have a code editor, it is recommended you use Visual Studio Code. 
 
 ```bash
 code .
 ```
-```
+
 Redirect to Chat
 ```bash
 cd Chat
 ```
-```
+
 Open the terminal in Visual code by pressing Ctrl+J (Windows) and run the following command:
 
 ```bash
 nodemon server.js
 ```
-```
+
 In a new terminal redirect to original directory
 ```bash
 cd ..
 ```
-```
+
 Open the terminal in Visual code by pressing Ctrl+J (Windows) and run the following command:
 
 ```bash
